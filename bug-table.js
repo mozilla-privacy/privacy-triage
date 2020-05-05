@@ -34,7 +34,7 @@ BugTable.prototype.xhrError = function (xhr, status, errorThrown) {
     console.log("Error: " + errorThrown);
     console.log("Status: " + status);
     console.log(xhr);
-    this.root.find(".error-message").text(error);
+    this.root.find(".error-message").text(errorThrown);
     this.root.find(".error-code").text(status);
     this.root.addClass("error");
 };
