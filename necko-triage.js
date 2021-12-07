@@ -174,7 +174,33 @@ NeckoTriage.prototype.availableTables = {
         },
         "extra_columns": [],
         "default_sort": "severity"
-    }
+    },
+    "untriaged-p4-p5": {
+        "is_user": false,
+        "title": "Untriaged P4 and P5 (no WPT sync bugs)",
+        "query": {
+            "product": "Core",
+            "query_format": "advanced",
+            "status_whiteboard_type": "notregexp",
+            "status_whiteboard": "\\[necko-triaged\\]|\\[necko-backlog\\]|\\[necko-would-take\\]|\\[necko-active\\]|\\[necko-next\\]",
+            "component": NeckoTriage.prototype.components,
+            "resolution": "---",
+            // Priority P4 or P5
+            "j_top": "OR",
+            "f1": "priority",
+            "o1": "equals",
+            "v1": "P4",
+            "f2": "priority",
+            "o2": "equals",
+            "v2": "P5",
+            // Exclude WPT sync bugs
+            "email1": "wptsync@mozilla.bugs",
+            "emailreporter1": "1",
+            "emailtype1": "notequals",
+        },
+        "extra_columns": [],
+        "default_sort": "severity"
+    },
 };
 NeckoTriage.prototype.add_more_tables = function () {
     for (comp in this.components) {
