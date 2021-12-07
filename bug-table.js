@@ -8,10 +8,12 @@ BugTable = function (id, config, triage) {
     this.triage = triage;
 };
 BugTable.formatters = {
-    "ni-date": GetNI
+    "ni-date": GetNI,
+    "alias": GetAlias,
 };
 BugTable.columnTitles = {
-    "ni-date": "Last ni?"
+    "ni-date": "Last ni?",
+    "alias": "Alias",
 };
 BugTable.sorters = {
     "ni-date": SortByNI,

@@ -125,3 +125,7 @@ function FormatDate(dateString) {
     let d = new Date(dateString);
     return d.toLocaleString();
 }
+
+function GetAlias(datarow) {
+    return datarow["alias"] || "";
+}

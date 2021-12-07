@@ -226,6 +226,20 @@ NeckoTriage.prototype.add_more_tables = function () {
             "default_sort": "severity",
         };
     }
+    this.availableTables["meta-bugs"] = {
+        "is_user": false,
+        "title": "Meta Bugs",
+        "query": {
+            "product": "Core",
+            "query_format": "advanced",
+            "component": NeckoTriage.prototype.components,
+            "resolution": "---",
+            "keywords": "meta",
+            "keywords_type": "allwords"
+        },
+        "default_sort": "id",
+        "extra_columns": ["alias"],
+    }
 };
 NeckoTriage.prototype.init = function () {
     // Make sure we display the proper version info
