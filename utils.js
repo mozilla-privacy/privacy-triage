@@ -129,3 +129,7 @@ function FormatDate(dateString) {
 function GetAlias(datarow) {
     return datarow["alias"] || "";
 }
+
+function GetPriority(datarow) {
+    return datarow["priority"] || "";
+}

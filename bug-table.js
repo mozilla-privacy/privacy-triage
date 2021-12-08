@@ -10,10 +10,12 @@ BugTable = function (id, config, triage) {
 BugTable.formatters = {
     "ni-date": GetNI,
     "alias": GetAlias,
+    "priority": GetPriority,
 };
 BugTable.columnTitles = {
     "ni-date": "Last ni?",
     "alias": "Alias",
+    "priority": "Priority",
 };
 BugTable.sorters = {
     "ni-date": SortByNI,
