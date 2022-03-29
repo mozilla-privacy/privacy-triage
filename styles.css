@@ -1,0 +1,41 @@
+
+/* Toggle Switch */
+.switch {
+    align-self: flex-end;
+    margin: 15px
+}
+.inner-switch {
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #555;
+    border-radius: 20px;
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    padding: 3px;
+    margin-left: 5px;
+}
+/* Dark Mode Layout */
+.dark,
+.dark * {
+    background-color: #222;
+    color: #e6e6e6;
+    border-color: #e6e6e6;
+}
+/* unvisited link */
+.dark a:link {
+    color: #58a6ff;
+}
+/* visited link */
+.dark a:visited {
+    color: #c58af9;
+}
+/* mouse over link */
+.dark a:hover {
+    color: #58a6ff;
+    text-decoration: underline;
+}
+/* selected link */
+.dark a:active {
+    color: blue;
+}

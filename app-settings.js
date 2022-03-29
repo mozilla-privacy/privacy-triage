@@ -44,10 +44,12 @@ AppSettings = function () {
         }
     });
 
+    $("#dark-mode").click($.proxy(this, "darkModeChanged"));
+
     this.load();
 };
 AppSettings.prototype.FIELDS = ["bz-apikey"];
-AppSettings.prototype.CHECKBOXES = ["open-bugs-in-new-window", "show-tables-in-tabs", "modally-edit-bugs"];
+AppSettings.prototype.CHECKBOXES = ["open-bugs-in-new-window", "show-tables-in-tabs", "modally-edit-bugs", "dark-mode"];
 AppSettings.prototype._settings = {};
 AppSettings.prototype.oldCustomQueries = null;
 AppSettings.prototype.load = function () {
@@ -193,7 +195,7 @@ AppSettings.prototype.showCQAdd = function () {
 };
 AppSettings.prototype.close = function () {
     let anySettingChanged = false;
-
+    let darkModeChanged = false;
     for (let i of this.FIELDS) {
         let newVal = $("#" + i).val();
         if (newVal != this._settings[i]) {
@@ -205,6 +207,9 @@ AppSettings.prototype.close = function () {
     for (let i of this.CHECKBOXES) {
         let newVal = document.getElementById(i).checked;
         if (newVal != this._settings[i]) {
+            if (i == "dark-mode") {
+                darkModeChanged = true;
+            }
             anySettingChanged = true;
         }
         this._settings[i] = newVal;
@@ -218,7 +223,9 @@ AppSettings.prototype.close = function () {
 
     if (anySettingChanged) {
         window.localStorage.setItem("settings", JSON.stringify(this._settings));
-        triage.reloadAll(resetUserTables);
+        if (!darkModeChanged) {
+            triage.reloadAll(resetUserTables);
+        }
     }
 };
 AppSettings.prototype.get = function (key) {
@@ -233,4 +240,12 @@ AppSettings.prototype.get = function (key) {
     }
 
     return undefined;
+};
+AppSettings.prototype.darkModeChanged = function () {
+    let darkMode = document.getElementById("dark-mode").checked;
+    if (darkMode) {
+        $("body").addClass("dark");
+    } else {
+        $("body").removeClass("dark");
+    }
 };

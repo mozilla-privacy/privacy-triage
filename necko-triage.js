@@ -240,6 +240,8 @@ NeckoTriage.prototype.init = function () {
     $("#menu").menu();
     $("#reload-all").click($.proxy(this, "reloadAll", false));
 
+    this.settings.darkModeChanged();
+
     this.loadBugzillaMetadata();
 
     this.add_more_tables();
