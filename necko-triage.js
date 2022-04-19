@@ -47,23 +47,6 @@ NeckoTriage.prototype.availableTables = {
         },
         "extra_columns": ["priority"],
     },
-    "untriaged-ni": {
-        "is_user": false,
-        "title": "Untriaged bugs (awaiting ni?)",
-        "query": {
-            "product": "Core",
-            "component": NeckoTriage.prototype.components,
-            "query_format": "advanced",
-            "status_whiteboard": ".*\\[necko\\-.*\\]",
-            "status_whiteboard_type": "notregexp",
-            "f1": "flagtypes.name",
-            "v1": "needinfo?",
-            "resolution": "---",
-            "o1": "substring",
-        },
-        "extra_columns": ["ni-date"],
-        "default_sort": "ni-date"
-    },
     "malformed": {
         "is_user": false,
         "title": "Malformed bugs (tagged but not priority or severity)",
@@ -85,6 +68,23 @@ NeckoTriage.prototype.availableTables = {
         },
         "extra_columns": ["priority"],
         "default_sort": "severity"
+    },
+    "untriaged-ni": {
+        "is_user": false,
+        "title": "Untriaged bugs (awaiting ni?)",
+        "query": {
+            "product": "Core",
+            "component": NeckoTriage.prototype.components,
+            "query_format": "advanced",
+            "status_whiteboard": ".*\\[necko\\-.*\\]",
+            "status_whiteboard_type": "notregexp",
+            "f1": "flagtypes.name",
+            "v1": "needinfo?",
+            "resolution": "---",
+            "o1": "substring",
+        },
+        "extra_columns": ["ni-date"],
+        "default_sort": "ni-date"
     },
     "p1-unassigned": {
         "is_user": false,
@@ -136,8 +136,8 @@ NeckoTriage.prototype.availableTables = {
             "o3": "equals",
             "v3": "intermittent-bug-filer@mozilla.bugs",
         },
-        "extra_columns": ["priority"],
-        "default_sort": "id"
+        "extra_columns": ["failure_count"],
+        "default_sort": "failure_count"
     },
     "intermittent-test-failures": {
         "is_user": false,
@@ -157,8 +157,8 @@ NeckoTriage.prototype.availableTables = {
             "o3": "equals",
             "v3": "intermittent-bug-filer@mozilla.bugs",
         },
-        "extra_columns": ["priority"],
-        "default_sort": "id"
+        "extra_columns": ["failure_count"],
+        "default_sort": "failure_count"
     },
     "untriaged-with-priority": {
         "is_user": false,
@@ -239,6 +239,8 @@ NeckoTriage.prototype.init = function () {
     this.settings = new AppSettings();
     $("#menu").menu();
     $("#reload-all").click($.proxy(this, "reloadAll", false));
+
+    this.settings.darkModeChanged();
 
     this.loadBugzillaMetadata();
 

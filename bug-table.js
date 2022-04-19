@@ -11,16 +11,19 @@ BugTable.formatters = {
     "ni-date": GetNI,
     "alias": GetAlias,
     "priority": GetPriority,
+    "failure_count": GetFailureCount,
 };
 BugTable.columnTitles = {
     "ni-date": "Last ni?",
     "alias": "Alias",
     "priority": "Priority",
+    "failure_count": "Failure Count",
 };
 BugTable.sorters = {
     "ni-date": SortByNI,
     "severity": SortBySeverity,
-    "id": SortByID
+    "id": SortByID,
+    "failure_count": SortFailures,
 };
 BugTable.prototype.id = "";
 BugTable.prototype.title = "";
@@ -190,6 +193,46 @@ BugTable.prototype.disableFunctionality = function () {
     this.root.click(function (e) {e.preventDefault();});
     this.root.addClass("loading");
 };
+BugTable.prototype.loadFailureCount = function (data) {
+    let endDate = new Date().toISOString().slice(0,10).replace(/-/g,"-");
+    let start = new Date();
+    start.setDate(start.getDate() - 7);
+    let startDate = start.toISOString().slice(0,10).replace(/-/g,"-");
+    let total = data["bugs"].length;
+    let count = 0;
+    let callback = $.proxy(this, "display");
+    $.each(data["bugs"], function (i, rowData) {
+        let id = rowData["id"];
+        let url = `https://treeherder.mozilla.org/api/failurecount/?bug=${id}&endday=${endDate}&format=json&startday=${startDate}&tree=all`;
+        $.getJSON({url: url,
+               type: "GET"})
+             .done(function (result) {
+                 count++;
+                let testRuns = 0;
+                let failureCount = 0;
+                for (let i = 0; i < result.length; i++) {
+                    testRuns += result[i]["test_runs"];
+                    failureCount += result[i]["failure_count"];
+                }
+                rowData["test_runs"] = testRuns;
+                rowData["failure_count"] = failureCount;
+                if (testRuns > 0) {
+                    rowData["failure_rate"] = (failureCount / testRuns).toFixed(3);
+                } else {
+                    rowData["failure_rate"] = 0.000;
+                }
+             })
+             .fail(function() {
+                 count++;
+             })
+             .always(function () {
+                 // We've queried all failure count for all bugs.
+                 if (count == total) {
+                     callback(data);
+                 }
+             });
+    });
+}
 BugTable.prototype.load = function () {
     this.disableFunctionality();
 
@@ -197,6 +240,17 @@ BugTable.prototype.load = function () {
     let query = $.extend({}, this.query);
     if (apiKey) {
         $.extend(query, {"api_key": apiKey});
+    }
+
+    if (this.extraColumns.indexOf("failure_count") != -1) {
+        $.getJSON({url: this.triage.settings.get("testing-only-bugzilla-origin") + "/rest/bug",
+               data: query,
+               type: "GET",
+               traditional: true})
+             .done($.proxy(this, "loadFailureCount"))
+             .fail($.proxy(this, "xhrError"))
+             .always($.proxy(this, "enableFunctionality"));
+        return;
     }
     $.getJSON({url: this.triage.settings.get("testing-only-bugzilla-origin") + "/rest/bug",
                data: query,

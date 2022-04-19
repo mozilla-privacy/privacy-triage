@@ -133,3 +133,11 @@ function GetAlias(datarow) {
 function GetPriority(datarow) {
     return datarow["priority"] || "";
 }
+
+function GetFailureCount(datarow) {
+    return datarow["failure_count"] || 0;
+}
+
+function SortFailures(a, b) {
+    return b["failure_count"] - a["failure_count"];
+}
