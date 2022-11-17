@@ -28,6 +28,8 @@ Principles
 Mark as triaged
 - Set [necko-triaged] in the whiteboard for bugs that have been triaged.
 - Set Priority and Severity
+- Consider adding [necko-priority-review] to the whiteboard to prioritize in the team's workflow
+- Emergency items can be put directly into [necko-priority-queue]
 
 Requesting more information (when necessary)
 - Steps to reproduce. You may also want to confirm they actually reproduce.
