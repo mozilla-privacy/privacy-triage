@@ -28,3 +28,15 @@ Principles
 Mark as triaged
 - Set [necko-triaged] in the whiteboard for bugs that have been triaged.
 - Set Priority and Severity
+- Consider adding [necko-priority-review] to the whiteboard to prioritize in the team's workflow
+- Emergency items can be put directly into [necko-priority-queue]
+
+Requesting more information (when necessary)
+- Steps to reproduce. You may also want to confirm they actually reproduce.
+- [http logs](https://firefox-source-docs.mozilla.org/networking/http/logging.html) should be submitted to necko@mozilla.com to prevent leaking personal information.
+- about:crashes - submit crash data to crash-stats.mozilla.org
+- about:support - application and system details
+
+Also
+- Review [triage-center](https://mozilla.github.io/triage-center/?component=Core%3ADOM%3A+Networking&component=Core%3ANetworking&component=Core%3ANetworking%3A+Cache&component=Core%3ANetworking%3A+Cookies&component=Core%3ANetworking%3A+DNS&component=Core%3ANetworking%3A+FTP&component=Core%3ANetworking%3A+File&component=Core%3ANetworking%3A+HTTP&component=Core%3ANetworking%3A+JAR&component=Core%3ANetworking%3A+WebSockets) as part of triage duty.
+
