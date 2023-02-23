@@ -72,6 +72,24 @@ NeckoTriage.prototype.availableTables = {
         "extra_columns": ["priority"],
         "default_sort": "priority"
     },
+    "next-priority": {
+        "is_user": false,
+        "title": "Necko Next Priority",
+        "query": {
+            "product": "Core",
+            "query_format": "advanced",
+            "component": NeckoTriage.prototype.components,
+            "resolution": "---",
+            "f1": "status_whiteboard",
+            "o1": "substring",
+            "v1": "[necko-next]",
+            "f2": "status_whiteboard",
+            "o2": "substring",
+            "v2": "[necko-priority-review]",
+        },
+        "extra_columns": ["priority"],
+        "default_sort": "priority"
+    },
     "priority-review": {
         "is_user": false,
         "title": "Necko Priority Review",
@@ -85,6 +103,21 @@ NeckoTriage.prototype.availableTables = {
             "v1": "[necko-priority-review]",
         },
         "extra_columns": [],
+    },
+    "monitoring": {
+        "is_user": false,
+        "title": "Necko Monitoring",
+        "query": {
+            "product": "Core",
+            "query_format": "advanced",
+            "component": NeckoTriage.prototype.components,
+            "resolution": "---",
+            "f1": "status_whiteboard",
+            "o1": "substring",
+            "v1": "[necko-monitor]",
+        },
+        "extra_columns": ["priority"],
+        "default_sort": "priority"
     },
     "malformed": {
         "is_user": false,
