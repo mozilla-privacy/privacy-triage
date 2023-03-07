@@ -158,7 +158,7 @@ function SortFailures(a, b) {
 }
 
 function SortPriority(a, b) {
-    let priorityA = a["priority"] === "--" ? 5 : parseInt(a["priority"].slice(1));
-    let priorityB = b["priority"] === "--" ? 5 : parseInt(b["priority"].slice(1));
+    let priorityA = a["priority"] === "--" ? 1 : parseInt(a["priority"].slice(1));
+    let priorityB = b["priority"] === "--" ? 1 : parseInt(b["priority"].slice(1));
     return priorityA > priorityB;
 }
