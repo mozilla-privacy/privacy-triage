@@ -82,10 +82,7 @@ NeckoTriage.prototype.availableTables = {
             "resolution": "---",
             "f1": "status_whiteboard",
             "o1": "substring",
-            "v1": "[necko-next]",
-            "f2": "status_whiteboard",
-            "o2": "substring",
-            "v2": "[necko-priority-review]",
+            "v1": "[necko-priority-next]",
         },
         "extra_columns": ["priority"],
         "default_sort": "priority"
@@ -106,7 +103,7 @@ NeckoTriage.prototype.availableTables = {
     },
     "monitoring": {
         "is_user": false,
-        "title": "Necko Monitoring",
+        "title": "Necko Monitor",
         "query": {
             "product": "Core",
             "query_format": "advanced",
