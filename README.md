@@ -8,12 +8,12 @@ The purpose of Necko's triage process is to organize "new" networking bugs into 
 Not all bugs are "new"; some come from other components, some are being revisited or re-opened.
 
 In general, we want to: 
-* Validate that bugs belong in the networking component (which are our responsibility) and 
+* Validate that bugs belong in the networking component (which are our responsibility)
 * Ensure that we have sufficient information to assign a priority and severity.
-* Categorize them under appropriate meta bugs for tracking 
+* Categorize them under appropriate meta bugs for easy tracking 
 * Alert performance team of performance impairments
 
-There are two locations we should be watch for incoming bugs:
+There are two locations we watch for incoming bugs:
 * [Triage Helper](https://mozilla-necko.github.io/necko-triage/)
 * [Triage Center](https://mozilla.github.io/triage-center/?component=Core%3ANetworking&component=Core%3ANetworking%3A+Cache&component=Core%3ANetworking%3A+Cookies&component=Core%3ANetworking%3A+DNS&component=Core%3ANetworking%3A+Domain+Lists&component=Core%3ANetworking%3A+FTP&component=Core%3ANetworking%3A+File&component=Core%3ANetworking%3A+HTTP&component=Core%3ANetworking%3A+JAR&component=Core%3ANetworking%3A+WebSockets)
 
@@ -45,13 +45,13 @@ Add to team's upcoming priorities if it seems like something that should be hand
 - Emergency items can be put directly into `[necko-priority-queue]`
 - (See below `Post-triage` for more details) 
 
-Add to relevant meta bugs (when necessary)
+Add to relevant meta bugs
 - Add the meta bug (ID or alias) to the "blocks" field of the new bug.
 - (See the triage helper for the list of existing meta bugs and their aliases)
 
 Handle performance bugs
 - All performance related bugs should be added to necko-perf metabug.
-- If the issue is one that hurts performance (or your not sure) set the "Performance Impact" flag to `?`.
+- If the issue is one that hurts performance (or you're not sure) set the "Performance Impact" flag to `?`.
 
 Request more information (when necessary)
 - Steps to reproduce. You may also want to confirm they actually reproduce.
