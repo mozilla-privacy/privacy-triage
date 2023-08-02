@@ -176,6 +176,20 @@ NeckoTriage.prototype.availableTables = {
         "extra_columns": ["priority"],
         "default_sort": "priority"
     },
+    "priority-new": {
+        "is_user": false,
+        "title": "Necko Priority New",
+        "query": {
+            "product": "Core",
+            "query_format": "advanced",
+            "component": NeckoTriage.prototype.components,
+            "resolution": "---",
+            "f1": "status_whiteboard",
+            "o1": "substring",
+            "v1": "[necko-priority-new]",
+        },
+        "extra_columns": [],
+    },
     "priority-review": {
         "is_user": false,
         "title": "Necko Priority Review",
