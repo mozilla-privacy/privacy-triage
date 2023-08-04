@@ -20,7 +20,7 @@ There are two locations we watch for incoming bugs:
 We use [Bugzilla](https://bugzilla.mozilla.org) to edit the bugs.
 
 Post-triage, a typical bug MAY flow through our handling stages like so:\
-`Triage -> Review -> Next -> Priority`
+`Triage -> New -> Review -> Next -> Priority`
 
 We also have bugs that we are `Monitoring` closely that may require further action.
 
@@ -80,6 +80,9 @@ Principles
 
 ## Post-triage
 
+- `New` is where we first put items that will be reviewed in the regular bug meeting. 
+It helps readability of the newest items if too many `Review` items linger.
+After first viewing in the regular bug meeting a `New` item should be moved into `Review`.
 - `Review` is the bucket of bugs that get reviewed in our regular bug review meeting. 
 Selected bugs will may get promoted for action. `Review` bugs should have a whiteboard with `[necko-priority-review]`.
 - `Next` is essentially used to label bugs that have already been reviewed and agreed upon as going into the priority queue soon. 
