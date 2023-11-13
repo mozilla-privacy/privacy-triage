@@ -1,0 +1,174 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer {
+    font-size: small;
+    font-weight: lighter;
+    font-style: italic;
+    margin-top: 1em;
+}
+
+.bug-container {
+    margin-top: 2em;
+}
+
+.ui-tabs .bug-container {
+    margin-top: 0;
+}
+
+.bug-table-title {
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.reload-button {
+    cursor: pointer;
+}
+
+.loading {
+    opacity: 0.33;
+    cursor: not-allowed;
+}
+
+.bug-table-body>.bug-table-row>td {
+    border-top: thin solid;
+}
+
+.bug-error {
+    display: none;
+    border: 1px solid darkred;
+    background: red;
+    padding-left: 0.5em;
+}
+
+.error .bug-error {
+    display: block;
+}
+
+/* Ensure some space for icons without line wrapping */
+.bug-id {
+    min-width: 8em;
+}
+
+th {
+    text-align: left;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Dialogs should be hidden until they are needed */
+.modal-dialog {
+    display: none;
+}
+
+.dialog-element {
+    margin-top: 1em;
+}
+
+.ui-menu {
+    width: 15em;
+}
+
+.help-link {
+    cursor: help;
+}
+
+.query-remove {
+    margin-left: 1em;
+}
+
+.tab-menu {
+    display: none;
+}
+
+.ui-tabs .tab-menu {
+    display: block;
+}
+
+/* Force links in bug tables to appear as links, otherwise the jquery-ui css
+   ends up taking precedence, and they just look like plain text */
+.ui-widget-content a.bug-link {
+    color: rgb(0, 0, 238);
+}
+
+.ui-widget-content a.bug-link:visited {
+    color: rgb(85, 26, 139);
+}
+
+.loading .bug-count-prefix,
+.loading .bug-count,
+.loading .bug-count-postfix,
+.ui-tabs-panel .bug-table-title,
+.ui-tabs-panel .bug-count-prefix,
+.ui-tabs-panel .bug-count-postfix,
+.zarro-boogs .bug-count-prefix,
+.zarro-boogs .bug-count,
+.zarro-boogs .bug-count-postfix {
+    display: none;
+}
+
+.view-innards>div {
+    margin-bottom: 1em;
+}
+
+.view-innards select, .view-innards input[type='text'] {
+    margin-left: 0.5em;
+}
+
+.view-innards .product-component label[for='component'],
+.view-innards .status-resolution label[for='resolution'] {
+    margin-left: 1em;
+}
+
+.view-innards .ni .textbox-wrapper label:before {
+    content: " ";
+}
+
+.view-innards textarea {
+    width: 100%;
+    height: 10em;
+    border: 1px solid;
+    border-radius: 3px;
+}
+
+.view-innards .comments {
+    max-height: 50%;
+    overflow-y: scroll;
+}
+
+.view-innards .comments .comment {
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 0.25em 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.view-innards .comments .comment textarea {
+    resize: none;
+    border: none;
+}
+
+.view-innards .comments .comment .author,
+.view-innards .comments .comment .date {
+    font-size: small;
+}
+
+.view-innards .comments .comment .date {
+    margin-left: 1em;
+}
+
+.sortable {
+    cursor: pointer;
+}
+
+.parenthesized:before {
+    content: "(";
+}
+
+.parenthesized:after {
+    content: ")";
+}
