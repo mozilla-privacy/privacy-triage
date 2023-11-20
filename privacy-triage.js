@@ -7,16 +7,9 @@ PrivacyTriage.prototype.useTabs = false;
 
 // COMPONENTS
 PrivacyTriage.prototype.components = [
-    "Core: DOM: Credential Management",
-    "Core: Permission Manager",
-    "Core: Privacy: Anti-Tracking",
-    "Firefox: Private Browsing",
-    "Firefox: Protections UI",
-    "Firefox: Security",
-    "Firefox: Site Identity",
-    "Firefox: Site Permissions",
-    "Toolkit: Data Sanitization",
-    "Toolkit: Safe Browsing"
+    "DOM: Credential Management",
+    "Permission Manager",
+    "Privacy: Anti-Tracking",
 ];
 
 // TABLES
