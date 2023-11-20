@@ -1,19 +1,26 @@
-PrivacyTriage = function () { };
-PrivacyTriage.prototype.tables = {};
-PrivacyTriage.prototype.rootElement = "#privacy-triage-root";
-// PrivacyTriage.prototype.rootElement = "#privacy-triage-root";
-PrivacyTriage.prototype.version = "0.1";
-PrivacyTriage.prototype.useTabs = false;
+NeckoTriage = function () { };
+NeckoTriage.prototype.tables = {};
+NeckoTriage.prototype.rootElement = "#necko-triage-root";
+// NeckoTriage.prototype.rootElement = "#privacy-triage-root";
+NeckoTriage.prototype.version = "0.1";
+NeckoTriage.prototype.useTabs = false;
 
 // COMPONENTS
-PrivacyTriage.prototype.components = [
-    "DOM: Credential Management",
-    "Permission Manager",
-    "Privacy: Anti-Tracking",
+NeckoTriage.prototype.components = [
+    "Core: DOM: Credential Management",
+    "Core: Permission Manager",
+    "Core: Privacy: Anti-Tracking",
+    "Firefox: Private Browsing",
+    "Firefox: Protections UI",
+    "Firefox: Security",
+    "Firefox: Site Identity",
+    "Firefox: Site Permissions",
+    "Toolkit: Data Sanitization",
+    "Toolkit: Safe Browsing"
 ];
 
 // TABLES
-PrivacyTriage.prototype.availableTables = {
+NeckoTriage.prototype.availableTables = {
     "untriaged": {
         "is_user": false,
         "title": "Untriaged bugs",
@@ -29,7 +36,7 @@ PrivacyTriage.prototype.availableTables = {
 
             // Core networking components
             "product": "Core",
-            "component": PrivacyTriage.prototype.components,
+            "component": NeckoTriage.prototype.components,
             "query_format": "advanced",
 
             // Skip intermittent bugs or WPT sync bugs
@@ -110,7 +117,7 @@ PrivacyTriage.prototype.availableTables = {
         "query": {
             "product": "Core",
             "query_format": "advanced",
-            "component": PrivacyTriage.prototype.components,
+            "component": NeckoTriage.prototype.components,
             "resolution": "---",
             "f1": "short_desc",
             "o1": "substring",
@@ -159,7 +166,7 @@ PrivacyTriage.prototype.availableTables = {
             "resolution": "---",
             "bug_status": "REOPENED",
             "product": "Core",
-            "component": PrivacyTriage.prototype.components,
+            "component": NeckoTriage.prototype.components,
             "query_format": "advanced",
         },
         "extra_columns": ["priority"],
@@ -174,7 +181,7 @@ PrivacyTriage.prototype.availableTables = {
         "query": {
             "product": "Core",
             "query_format": "advanced",
-            "component": PrivacyTriage.prototype.components,
+            "component": NeckoTriage.prototype.components,
             "resolution": "---",
             "f1": "status_whiteboard",
             "o1": "substring",
@@ -193,7 +200,7 @@ PrivacyTriage.prototype.availableTables = {
         "query": {
             "product": "Core",
             "query_format": "advanced",
-            "component": PrivacyTriage.prototype.components,
+            "component": NeckoTriage.prototype.components,
             "resolution": "---",
             "f1": "status_whiteboard",
             "o1": "substring",
@@ -212,7 +219,7 @@ PrivacyTriage.prototype.availableTables = {
         "query": {
             "product": "Core",
             "query_format": "advanced",
-            "component": PrivacyTriage.prototype.components,
+            "component": NeckoTriage.prototype.components,
             "resolution": "---",
             "f1": "status_whiteboard",
             "o1": "substring",
@@ -228,7 +235,7 @@ PrivacyTriage.prototype.availableTables = {
         "query": {
             "product": "Core",
             "query_format": "advanced",
-            "component": PrivacyTriage.prototype.components,
+            "component": NeckoTriage.prototype.components,
             "resolution": "---",
             "f1": "status_whiteboard",
             "o1": "substring",
@@ -246,7 +253,7 @@ PrivacyTriage.prototype.availableTables = {
         "query": {
             "product": "Core",
             "query_format": "advanced",
-            "component": PrivacyTriage.prototype.components,
+            "component": NeckoTriage.prototype.components,
             "resolution": "---",
             "f1": "status_whiteboard",
             "o1": "substring",
@@ -263,7 +270,7 @@ PrivacyTriage.prototype.availableTables = {
         "title": "Untriaged bugs (awaiting ni?)",
         "query": {
             "product": "Core",
-            "component": PrivacyTriage.prototype.components,
+            "component": NeckoTriage.prototype.components,
             "query_format": "advanced",
             "f1": "flagtypes.name",
             "v1": "needinfo?",
@@ -312,7 +319,7 @@ PrivacyTriage.prototype.availableTables = {
             "v2": "nobody@mozilla.org",
             "product": "Core",
             "query_format": "advanced",
-            "component": PrivacyTriage.prototype.components,
+            "component": NeckoTriage.prototype.components,
             "priority": "P1",
             "resolution": "---"
         },
@@ -333,8 +340,8 @@ PrivacyTriage.prototype.availableTables = {
             "v2": "nobody@mozilla.org",
             "product": "Core",
             "query_format": "advanced",
-            // "component": PrivacyTriage.prototype.components,
-            "component": PrivacyTriage.prototype.components,
+            // "component": NeckoTriage.prototype.components,
+            "component": NeckoTriage.prototype.components,
             "priority": "P2",
             "resolution": "---"
         },
@@ -349,7 +356,7 @@ PrivacyTriage.prototype.availableTables = {
         "query": {
             "product": "Core",
             "query_format": "advanced",
-            "component": PrivacyTriage.prototype.components,
+            "component": NeckoTriage.prototype.components,
             "resolution": "---",
             "keywords": "stalled",
             "keywords_type": "allwords"
@@ -366,7 +373,7 @@ PrivacyTriage.prototype.availableTables = {
         "query": {
             "product": "Core",
             "query_format": "advanced",
-            "component": PrivacyTriage.prototype.components,
+            "component": NeckoTriage.prototype.components,
             "resolution": "---",
             "f1": "short_desc",
             "o1": "substring",
@@ -411,7 +418,7 @@ PrivacyTriage.prototype.availableTables = {
         "query": {
             "product": "Core",
             "query_format": "advanced",
-            "component": PrivacyTriage.prototype.components,
+            "component": NeckoTriage.prototype.components,
             "resolution": "---",
             "f1": "short_desc",
             "o1": "substring",
@@ -452,7 +459,7 @@ PrivacyTriage.prototype.availableTables = {
 };
 
 // UNASSIGNED P2 BUGS SECTION
-PrivacyTriage.prototype.add_more_tables = function () {
+NeckoTriage.prototype.add_more_tables = function () {
     for (comp in this.components) {
         let name = "p2-unassigned-" + comp;
         let title = "Unassigned P2 bugs - " + this.components[comp];
@@ -484,7 +491,7 @@ PrivacyTriage.prototype.add_more_tables = function () {
         "query": {
             "product": "Core",
             "query_format": "advanced",
-            "component": PrivacyTriage.prototype.components,
+            "component": NeckoTriage.prototype.components,
             "resolution": "---",
             "keywords": "meta",
             "keywords_type": "allwords"
@@ -494,7 +501,7 @@ PrivacyTriage.prototype.add_more_tables = function () {
     }
 };
 
-PrivacyTriage.prototype.init = function () {
+NeckoTriage.prototype.init = function () {
     // Make sure we display the proper version info
     $("#necko-triage-version").text(this.version);
     // $("#privacy-triage-version").text(this.version);
@@ -533,7 +540,7 @@ PrivacyTriage.prototype.init = function () {
     }
 };
 
-PrivacyTriage.prototype.persistProducts = function (data) {
+NeckoTriage.prototype.persistProducts = function (data) {
     let ps = data["products"];
     let products = [];
     for (let i = 0; i < ps.length; i++) {
@@ -563,7 +570,7 @@ PrivacyTriage.prototype.persistProducts = function (data) {
     this.products = products;
     window.localStorage.setItem("bz-products", JSON.stringify(this.products));
 };
-PrivacyTriage.prototype.lazyRefreshProducts = function () {
+NeckoTriage.prototype.lazyRefreshProducts = function () {
     let self = this;
     let origin = this.settings.get("testing-only-bugzilla-origin");
     $.getJSON({url: origin + "/rest/product?type=enterable&include_fields=name,components",
@@ -571,7 +578,7 @@ PrivacyTriage.prototype.lazyRefreshProducts = function () {
                traditional: true})
              .then(function (data) { self.persistProducts(data); });
 };
-PrivacyTriage.prototype.loadBugzillaMetadata = async function () {
+NeckoTriage.prototype.loadBugzillaMetadata = async function () {
     let origin = this.settings.get("testing-only-bugzilla-origin");
     let self = this;
 
@@ -614,7 +621,7 @@ PrivacyTriage.prototype.loadBugzillaMetadata = async function () {
     }
 };
 
-PrivacyTriage.prototype.reloadAll = function (resetUserTables) {
+NeckoTriage.prototype.reloadAll = function (resetUserTables) {
     // In addition to destroying our tables if the user has un-checked the box,
     // we need to destroy them (temporarily) if we're changing the list of
     // user tables. This allows jquery-ui to set the proper classes on the new
@@ -654,14 +661,14 @@ PrivacyTriage.prototype.reloadAll = function (resetUserTables) {
 
     this.useTabs = this.settings.get("show-tables-in-tabs");
 };
-PrivacyTriage.prototype.createUserTables = function () {
+NeckoTriage.prototype.createUserTables = function () {
     let customQueries = this.settings.get("custom-queries");
     let self = this;
     $.each(customQueries, function (i, customQuery) {
         self.createUserTable(i, customQuery);
     });
 };
-PrivacyTriage.prototype.createUserTable = function (index, customQuery) {
+NeckoTriage.prototype.createUserTable = function (index, customQuery) {
     let queryConfig = $.extend({}, customQuery);
     queryConfig["extra_columns"] = [];
     queryConfig["default_sort"] = "severity";
@@ -672,7 +679,7 @@ PrivacyTriage.prototype.createUserTable = function (index, customQuery) {
     this.tables[tableID].create();
 };
 
-PrivacyTriage.prototype.autocompleteEmail = async function (request, response) {
+NeckoTriage.prototype.autocompleteEmail = async function (request, response) {
     let api_key = this.settings.get("bz-apikey");
     let url = this.settings.get("testing-only-bugzilla-origin") + "/rest/user?api_key=" + api_key + "&match=" + request["term"];
     let matches;
