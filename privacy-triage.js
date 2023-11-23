@@ -7,7 +7,16 @@ NeckoTriage.prototype.useTabs = false;
 
 // COMPONENTS
 NeckoTriage.prototype.components = [
+    "DOM: Credential Management",
+    "Permission Manager",
     "Privacy: Anti-Tracking",
+    "Private Browsing",
+    "Protections UI",
+    "Security",
+    "Site Identity",
+    "Site Permissions",
+    "Data Sanitization",
+    "Safe Browsing"
 ];
 
 // TABLES
@@ -26,7 +35,6 @@ NeckoTriage.prototype.availableTables = {
             "n19": "1",
 
             // Core networking components
-            "product": "Core",
             "component": NeckoTriage.prototype.components,
             "query_format": "advanced",
 
@@ -106,7 +114,6 @@ NeckoTriage.prototype.availableTables = {
         "is_user": false,
         "title": "Recent Intermittent test failures",
         "query": {
-            "product": "Core",
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "resolution": "---",
@@ -156,7 +163,6 @@ NeckoTriage.prototype.availableTables = {
         "query": {
             "resolution": "---",
             "bug_status": "REOPENED",
-            "product": "Core",
             "component": NeckoTriage.prototype.components,
             "query_format": "advanced",
         },
@@ -170,7 +176,6 @@ NeckoTriage.prototype.availableTables = {
         // "title": "Necko Priority Queue",
         "title": "Privacy Priority Queue",
         "query": {
-            "product": "Core",
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "resolution": "---",
@@ -189,7 +194,6 @@ NeckoTriage.prototype.availableTables = {
         // "title": "Necko Next Priority",
         "title": "Privacy Next Priority",
         "query": {
-            "product": "Core",
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "resolution": "---",
@@ -208,7 +212,6 @@ NeckoTriage.prototype.availableTables = {
         // "title": "Necko Priority New",
         "title": "Privacy Priority New",
         "query": {
-            "product": "Core",
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "resolution": "---",
@@ -224,7 +227,6 @@ NeckoTriage.prototype.availableTables = {
         // "title": "Necko Priority Review",
         "title": "Privacy Priority Review",
         "query": {
-            "product": "Core",
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "resolution": "---",
@@ -242,7 +244,7 @@ NeckoTriage.prototype.availableTables = {
         // "title": "Necko Monitor",
         "title": "Privacy Monitor",
         "query": {
-            "product": "Core",
+
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "resolution": "---",
@@ -260,7 +262,7 @@ NeckoTriage.prototype.availableTables = {
         "is_user": false,
         "title": "Untriaged bugs (awaiting ni?)",
         "query": {
-            "product": "Core",
+
             "component": NeckoTriage.prototype.components,
             "query_format": "advanced",
             "f1": "flagtypes.name",
@@ -308,7 +310,7 @@ NeckoTriage.prototype.availableTables = {
             "f2": "assigned_to",
             "o2": "equals",
             "v2": "nobody@mozilla.org",
-            "product": "Core",
+
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "priority": "P1",
@@ -329,7 +331,6 @@ NeckoTriage.prototype.availableTables = {
             "f2": "assigned_to",
             "o2": "equals",
             "v2": "nobody@mozilla.org",
-            "product": "Core",
             "query_format": "advanced",
             // "component": NeckoTriage.prototype.components,
             "component": NeckoTriage.prototype.components,
@@ -345,7 +346,6 @@ NeckoTriage.prototype.availableTables = {
         "is_user": false,
         "title": "Stalled Bugs",
         "query": {
-            "product": "Core",
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "resolution": "---",
@@ -362,7 +362,6 @@ NeckoTriage.prototype.availableTables = {
         "is_user": false,
         "title": "Intermittent test crashes",
         "query": {
-            "product": "Core",
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "resolution": "---",
@@ -407,7 +406,6 @@ NeckoTriage.prototype.availableTables = {
         "is_user": false,
         "title": "Intermittent test failures",
         "query": {
-            "product": "Core",
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "resolution": "---",
@@ -464,7 +462,6 @@ NeckoTriage.prototype.add_more_tables = function () {
                 "f2": "assigned_to",
                 "o2": "equals",
                 "v2": "nobody@mozilla.org",
-                "product": "Core",
                 "query_format": "advanced",
                 "component": [this.components[comp]],
                 "priority": "P2",
@@ -480,7 +477,6 @@ NeckoTriage.prototype.add_more_tables = function () {
         "is_user": false,
         "title": "Meta Bugs",
         "query": {
-            "product": "Core",
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "resolution": "---",
