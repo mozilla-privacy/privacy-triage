@@ -7,16 +7,16 @@ NeckoTriage.prototype.useTabs = false;
 
 // COMPONENTS
 NeckoTriage.prototype.components = [
-    "Core: DOM: Credential Management",
-    "Core: Permission Manager",
-    "Core: Privacy: Anti-Tracking",
-    "Firefox: Private Browsing",
-    "Firefox: Protections UI",
-    "Firefox: Security",
-    "Firefox: Site Identity",
-    "Firefox: Site Permissions",
-    "Toolkit: Data Sanitization",
-    "Toolkit: Safe Browsing"
+    "DOM: Credential Management",
+    "Permission Manager",
+    "Privacy: Anti-Tracking",
+    "Private Browsing",
+    "Protections UI",
+    "Security",
+    "Site Identity",
+    "Site Permissions",
+    "Data Sanitization",
+    "Safe Browsing"
 ];
 
 // TABLES
