@@ -21,93 +21,128 @@ NeckoTriage.prototype.components = [
 
 // TABLES
 NeckoTriage.prototype.availableTables = {
-    "untriaged": {
+
+    // OPEN S1 SECTION
+    "s1-open": {
         "is_user": false,
-        "title": "Untriaged bugs",
+        "title": "Open S1 bugs",
         "query": {
-            // Not closed
-            "resolution": "---",
-
-            // no need info
-            "f19": "flagtypes.name",
-            "v19": "needinfo",
-            "o19": "substring",
-            "n19": "1",
-
-            // Core networking components
             "product": "Core",
-            "component": NeckoTriage.prototype.components,
             "query_format": "advanced",
-
-            // Skip intermittent bugs or WPT sync bugs
-            "email1": "intermittent-bug-filer@mozilla.bugs",
-            "email2": "wptsync@mozilla.bugs",
-            "emailreporter1": "1",
-            "emailreporter2": "1",
-            "emailtype1": "notequals",
-            "emailtype2": "notequals",
-            "j1": "OR",
-            "f1": "OP",
-
-            // Don't have triaged tag
-            "f2": "OP",
-            "n3": "1",
-            "f3": "status_whiteboard",
-            "o3": "substring",
-            // "v3": "[necko-triaged]",
-            "v3": "[privacy-triaged]",
-            "n4": "1",
-            "f4": "status_whiteboard",
-            "o4": "substring",
-            // "v4": "[necko-priority-queue]",
-            "v4": "[privacy-priority-queue]",
-            "n5": "1",
-            "f5": "status_whiteboard",
-            "o5": "substring",
-            // "v5": "[necko-priority-review]",
-            "v5": "[privacy-priority-review]",
-            "n6": "1",
-            "f6": "status_whiteboard",
-            "o6": "substring",
-            // "v6": "[necko-would-take]",
-            "v6": "[privacy-would-take]",
-            "n7": "1",
-            "f7": "status_whiteboard",
-            "o7": "substring",
-            // "v7": "[necko-backlog]",
-            "v7": "[privacy-backlog]",
-            "n8": "1",
-            "f8": "status_whiteboard",
-            "o8": "substring",
-            // "v8": "[necko-active]",
-            "v8": "[privacy-active]",
-            "n9": "1",
-            "f9": "status_whiteboard",
-            "o9": "substring",
-            // "v9": "[necko-next]",
-            "v9": "[privacy-next]",
-            "f10": "CP",
-
-            // Has [necko-triaged] but priority or severity is empty.
-            "f11": "OP",
-            "j12": "OR",
-            "f12": "OP",
-            "f13": "priority",
-            "o13": "equals",
-            "v13": "--",
-            "f14": "bug_severity",
-            "o14": "equals",
-            "v14": "--",
-            "f15": "CP",
-            "f16": "status_whiteboard",
-            "o16": "substring",
-            // "v16": "[necko-triaged]",
-            "v16": "[privacy-triaged]",
-            "f17": "CP",
-            "f18": "CP",
+            "component": NeckoTriage.prototype.components,
+            "severity": "S1",
+            "resolution": "---"
         },
         "extra_columns": ["priority"],
         "default_sort": "priority"
+    },
+
+    "s2-open": {
+        "is_user": false,
+        "title": "Open S2 bugs",
+        "query": {
+            "product": "Core",
+            "query_format": "advanced",
+            "component": NeckoTriage.prototype.components,
+            "severity": "S2",
+            "resolution": "---"
+        },
+        "extra_columns": ["priority"],
+        "default_sort": "priority"
+    },
+
+
+    // PRIORITY QUEUE SECTION
+    "priority-queue": {
+        "is_user": false,
+        // "title": "Necko Priority Queue",
+        "title": "Privacy Priority Queue",
+        "query": {
+            "product": "Core",
+            "query_format": "advanced",
+            "component": NeckoTriage.prototype.components,
+            "resolution": "---",
+            "f1": "status_whiteboard",
+            "o1": "substring",
+            // "v1": "[necko-priority-queue]",
+            "v1": "[privacy-priority-queue]",
+        },
+        "extra_columns": ["priority"],
+        "default_sort": "priority"
+    },
+
+    // NEXT PRIORITY SECTION
+    "next-priority": {
+        "is_user": false,
+        // "title": "Necko Next Priority",
+        "title": "Privacy Next Priority",
+        "query": {
+            "product": "Core",
+            "query_format": "advanced",
+            "component": NeckoTriage.prototype.components,
+            "resolution": "---",
+            "f1": "status_whiteboard",
+            "o1": "substring",
+            // "v1": "[necko-priority-next]",
+            "v1": "[privacy-next]",
+        },
+        "extra_columns": ["priority"],
+        "default_sort": "priority"
+    },
+
+    // MONITOR SECTION
+    "monitoring": {
+        "is_user": false,
+        // "title": "Necko Monitor",
+        "title": "Privacy Monitor",
+        "query": {
+            "product": "Core",
+            "query_format": "advanced",
+            "component": NeckoTriage.prototype.components,
+            "resolution": "---",
+            "f1": "status_whiteboard",
+            "o1": "substring",
+            // "v1": "[necko-monitor]",
+            "v1": "[privacy-monitor]",
+        },
+        "extra_columns": ["priority"],
+        "default_sort": "priority"
+    },
+
+    "untriaged-ni": {
+        "is_user": false,
+        "title": "Untriaged bugs (awaiting ni?)",
+        "query": {
+            "product": "Core",
+            "component": NeckoTriage.prototype.components,
+            "query_format": "advanced",
+            "f1": "flagtypes.name",
+            "v1": "needinfo?",
+            "resolution": "---",
+            "o1": "substring",
+            "n3": "1",
+            "f3": "status_whiteboard",
+            "o3": "substring",
+            "v3": "[necko-triaged]",
+            "n4": "1",
+            "f4": "status_whiteboard",
+            "o4": "substring",
+            "v4": "[necko-would-take]",
+            "n5": "1",
+            "f5": "status_whiteboard",
+            "o5": "substring",
+            "v5": "[necko-backlog]",
+            "n6": "1",
+            "f6": "status_whiteboard",
+            "o6": "substring",
+            "v6": "[necko-active]",
+            "n7": "1",
+            "f7": "status_whiteboard",
+            "o7": "substring",
+            "v7": "[necko-next]",
+        },
+        "extra_columns": ["ni-date"],
+        "default_sort": "ni-date"
     },
 
     // TEST FAILURES SECTION
@@ -156,213 +191,6 @@ NeckoTriage.prototype.availableTables = {
         },
         "extra_columns": ["failure_count"],
         "default_sort": "failure_count"
-    },
-
-    // REOPENED SECTION
-    "reopened" : {
-        "is_user": false,
-        "title": "Reopened bugs",
-        "query": {
-            "resolution": "---",
-            "bug_status": "REOPENED",
-            "product": "Core",
-            "component": NeckoTriage.prototype.components,
-            "query_format": "advanced",
-        },
-        "extra_columns": ["priority"],
-        "default_sort": "priority"
-    },
-
-    // PRIORITY QUEUE SECTION
-    "priority-queue": {
-        "is_user": false,
-        // "title": "Necko Priority Queue",
-        "title": "Privacy Priority Queue",
-        "query": {
-            "product": "Core",
-            "query_format": "advanced",
-            "component": NeckoTriage.prototype.components,
-            "resolution": "---",
-            "f1": "status_whiteboard",
-            "o1": "substring",
-            // "v1": "[necko-priority-queue]",
-            "v1": "[privacy-priority-queue]",
-        },
-        "extra_columns": ["priority"],
-        "default_sort": "priority"
-    },
-
-    // NEXT PRIORITY SECTION
-    "next-priority": {
-        "is_user": false,
-        // "title": "Necko Next Priority",
-        "title": "Privacy Next Priority",
-        "query": {
-            "product": "Core",
-            "query_format": "advanced",
-            "component": NeckoTriage.prototype.components,
-            "resolution": "---",
-            "f1": "status_whiteboard",
-            "o1": "substring",
-            // "v1": "[necko-priority-next]",
-            "v1": "[privacy-priority-next]",
-        },
-        "extra_columns": ["priority"],
-        "default_sort": "priority"
-    },
-
-    // PRIORITY NEW SECTION
-    "priority-new": {
-        "is_user": false,
-        // "title": "Necko Priority New",
-        "title": "Privacy Priority New",
-        "query": {
-            "product": "Core",
-            "query_format": "advanced",
-            "component": NeckoTriage.prototype.components,
-            "resolution": "---",
-            "f1": "status_whiteboard",
-            "o1": "substring",
-            // "v1": "[necko-priority-new]",
-            "v1": "[privacy-priority-new]",
-        },
-        "extra_columns": [],
-    },
-    "priority-review": {
-        "is_user": false,
-        // "title": "Necko Priority Review",
-        "title": "Privacy Priority Review",
-        "query": {
-            "product": "Core",
-            "query_format": "advanced",
-            "component": NeckoTriage.prototype.components,
-            "resolution": "---",
-            "f1": "status_whiteboard",
-            "o1": "substring",
-            // "v1": "[necko-priority-review]",
-            "v1": "[privacy-priority-review]",
-        },
-        "extra_columns": [],
-    },
-
-    // MONITOR SECTION
-    "monitoring": {
-        "is_user": false,
-        // "title": "Necko Monitor",
-        "title": "Privacy Monitor",
-        "query": {
-            "product": "Core",
-            "query_format": "advanced",
-            "component": NeckoTriage.prototype.components,
-            "resolution": "---",
-            "f1": "status_whiteboard",
-            "o1": "substring",
-            // "v1": "[necko-monitor]",
-            "v1": "[privacy-monitor]",
-        },
-        "extra_columns": ["priority"],
-        "default_sort": "priority"
-    },
-
-    // UNTRIAGED BUGS SECTION
-    "untriaged-ni": {
-        "is_user": false,
-        "title": "Untriaged bugs (awaiting ni?)",
-        "query": {
-            "product": "Core",
-            "component": NeckoTriage.prototype.components,
-            "query_format": "advanced",
-            "f1": "flagtypes.name",
-            "v1": "needinfo?",
-            "resolution": "---",
-            "o1": "substring",
-            "n3": "1",
-            "f3": "status_whiteboard",
-            "o3": "substring",
-            // "v3": "[necko-triaged]",
-            "v3": "[privacy-triaged]",
-            "n4": "1",
-            "f4": "status_whiteboard",
-            "o4": "substring",
-            // "v4": "[necko-would-take]",
-            "v4": "[privacy-would-take]",
-            "n5": "1",
-            "f5": "status_whiteboard",
-            "o5": "substring",
-            // "v5": "[necko-backlog]",
-            "v5": "[privacy-backlog]",
-            "n6": "1",
-            "f6": "status_whiteboard",
-            "o6": "substring",
-            // "v6": "[necko-active]",
-            "v6": "[privacy-active]",
-            "n7": "1",
-            "f7": "status_whiteboard",
-            "o7": "substring",
-            // "v7": "[necko-next]",
-            "v7": "[privacy-next]",
-        },
-        "extra_columns": ["ni-date"],
-        "default_sort": "ni-date"
-    },
-
-    // UNASSIGNED P1 SECTION
-    "p1-unassigned": {
-        "is_user": false,
-        "title": "Unassigned P1 bugs",
-        "query": {
-            "j_top": "OR",
-            "f1": "assigned_to",
-            "o1": "isempty",
-            "f2": "assigned_to",
-            "o2": "equals",
-            "v2": "nobody@mozilla.org",
-            "product": "Core",
-            "query_format": "advanced",
-            "component": NeckoTriage.prototype.components,
-            "priority": "P1",
-            "resolution": "---"
-        },
-        "extra_columns": [],
-        "default_sort": "severity"
-    },
-
-    // UNASSIGNED P2 SECTION
-    "p2-unassigned": {
-        "is_user": false,
-        "title": "Unassigned P2 bugs",
-        "query": {
-            "j_top": "OR",
-            "f1": "assigned_to",
-            "o1": "isempty",
-            "f2": "assigned_to",
-            "o2": "equals",
-            "v2": "nobody@mozilla.org",
-            "product": "Core",
-            "query_format": "advanced",
-            // "component": NeckoTriage.prototype.components,
-            "component": NeckoTriage.prototype.components,
-            "priority": "P2",
-            "resolution": "---"
-        },
-        "extra_columns": [],
-        "default_sort": "severity"
-    },
-
-    // STALLED BUGS SECTION
-    "stalled": {
-        "is_user": false,
-        "title": "Stalled Bugs",
-        "query": {
-            "product": "Core",
-            "query_format": "advanced",
-            "component": NeckoTriage.prototype.components,
-            "resolution": "---",
-            "keywords": "stalled",
-            "keywords_type": "allwords"
-        },
-        "extra_columns": [],
-        "default_sort": "severity"
     },
 
 
@@ -455,6 +283,27 @@ NeckoTriage.prototype.availableTables = {
         },
         "extra_columns": ["failure_count"],
         "default_sort": "failure_count"
+    },
+
+    // UNASSIGNED P1 SECTION
+    "p1-unassigned": {
+        "is_user": false,
+        "title": "Unassigned P1 bugs",
+        "query": {
+            "j_top": "OR",
+            "f1": "assigned_to",
+            "o1": "isempty",
+            "f2": "assigned_to",
+            "o2": "equals",
+            "v2": "nobody@mozilla.org",
+            "product": "Core",
+            "query_format": "advanced",
+            "component": NeckoTriage.prototype.components,
+            "priority": "P1",
+            "resolution": "---"
+        },
+        "extra_columns": [],
+        "default_sort": "severity"
     },
 };
 
