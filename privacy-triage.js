@@ -12,7 +12,6 @@ NeckoTriage.prototype.components = [
     "Privacy: Anti-Tracking",
     "Private Browsing",
     "Protections UI",
-    "Security",
     "Site Identity",
     "Site Permissions",
     "Data Sanitization",
@@ -21,13 +20,86 @@ NeckoTriage.prototype.components = [
 
 // TABLES
 NeckoTriage.prototype.availableTables = {
+    // PRIORITY QUEUE SECTION
+    "priority-queue": {
+        "is_user": false,
+        // "title": "Necko Priority Queue",
+        "title": "Privacy Priority Queue",
+        "query": {
+            "product": ["Core","Firefox","Toolkit"],
+            "query_format": "advanced",
+            "component": NeckoTriage.prototype.components,
+            "resolution": "---",
+            "keywords": "priv-prio",
+            "keywords_type": "allwords"
+        },
+        "extra_columns": ["priority"],
+        "default_sort": "priority"
+    },
+
+        // PRIORITY QUEUE UNASSIGNED SECTION
+        "priority-queue-unassigned": {
+            "is_user": false,
+            // "title": "Necko Priority Queue",
+            "title": "Unassigned Privacy Priority Queue",
+            "query": {
+                "product": ["Core","Firefox","Toolkit"],
+                "j_top": "OR",
+                "f1": "assigned_to",
+                "o1": "isempty",
+                "f2": "assigned_to",
+                "o2": "equals",
+                "v2": "nobody@mozilla.org",
+                "query_format": "advanced",
+                "component": NeckoTriage.prototype.components,
+                "resolution": "---",
+                "keywords": "priv-prio",
+                "keywords_type": "allwords"
+            },
+            "extra_columns": ["priority"],
+            "default_sort": "priority"
+        },
+
+    // NEXT PRIORITY SECTION
+    "next-priority": {
+        "is_user": false,
+        // "title": "Necko Next Priority",
+        "title": "Privacy Next Priority",
+        "query": {
+            "product": ["Core","Firefox","Toolkit"],
+            "query_format": "advanced",
+            "component": NeckoTriage.prototype.components,
+            "resolution": "---",
+            "keywords": "priv-next",
+            "keywords_type": "allwords"
+        },
+        "extra_columns": ["priority"],
+        "default_sort": "priority"
+    },
+
+    // MONITOR SECTION
+    "monitoring": {
+        "is_user": false,
+        // "title": "Necko Monitor",
+        "title": "Privacy Monitor",
+        "query": {
+            "product": ["Core","Firefox","Toolkit"],
+            "query_format": "advanced",
+            "component": NeckoTriage.prototype.components,
+            "resolution": "---",
+            "keywords": "priv-monitor",
+            "keywords_type": "allwords"
+        },
+        "extra_columns": ["priority"],
+        "default_sort": "priority"
+    },
 
     // OPEN S1 SECTION
     "s1-open": {
         "is_user": false,
         "title": "Open S1 bugs",
         "query": {
-            "product": "Core",
+            "product": ["Core","Firefox","Toolkit"],
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "severity": "S1",
@@ -41,7 +113,7 @@ NeckoTriage.prototype.availableTables = {
         "is_user": false,
         "title": "Open S2 bugs",
         "query": {
-            "product": "Core",
+            "product": ["Core","Firefox","Toolkit"],
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "severity": "S2",
@@ -51,98 +123,46 @@ NeckoTriage.prototype.availableTables = {
         "default_sort": "priority"
     },
 
-
-    // PRIORITY QUEUE SECTION
-    "priority-queue": {
+    // UNASSIGNED P1 SECTION
+    "p1-unassigned": {
         "is_user": false,
-        // "title": "Necko Priority Queue",
-        "title": "Privacy Priority Queue",
+        "title": "Unassigned P1 bugs",
         "query": {
-            "product": "Core",
+            "product": ["Core","Firefox","Toolkit"],
+            "j_top": "OR",
+            "f1": "assigned_to",
+            "o1": "isempty",
+            "f2": "assigned_to",
+            "o2": "equals",
+            "v2": "nobody@mozilla.org",
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
-            "resolution": "---",
-            "f1": "status_whiteboard",
-            "o1": "substring",
-            // "v1": "[necko-priority-queue]",
-            "v1": "[privacy-priority-queue]",
+            "priority": "P1",
+            "resolution": "---"
         },
-        "extra_columns": ["priority"],
-        "default_sort": "priority"
+        "extra_columns": [],
+        "default_sort": "severity"
     },
 
-    // NEXT PRIORITY SECTION
-    "next-priority": {
+    // UNASSIGNED P2 SECTION
+    "p2-unassigned": {
         "is_user": false,
-        // "title": "Necko Next Priority",
-        "title": "Privacy Next Priority",
+        "title": "Unassigned P2 bugs",
         "query": {
-            "product": "Core",
+            "product": ["Core","Firefox","Toolkit"],
+            "j_top": "OR",
+            "f1": "assigned_to",
+            "o1": "isempty",
+            "f2": "assigned_to",
+            "o2": "equals",
+            "v2": "nobody@mozilla.org",
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
-            "resolution": "---",
-            "f1": "status_whiteboard",
-            "o1": "substring",
-            // "v1": "[necko-priority-next]",
-            "v1": "[privacy-next]",
+            "priority": "P2",
+            "resolution": "---"
         },
-        "extra_columns": ["priority"],
-        "default_sort": "priority"
-    },
-
-    // MONITOR SECTION
-    "monitoring": {
-        "is_user": false,
-        // "title": "Necko Monitor",
-        "title": "Privacy Monitor",
-        "query": {
-            "product": "Core",
-            "query_format": "advanced",
-            "component": NeckoTriage.prototype.components,
-            "resolution": "---",
-            "f1": "status_whiteboard",
-            "o1": "substring",
-            // "v1": "[necko-monitor]",
-            "v1": "[privacy-monitor]",
-        },
-        "extra_columns": ["priority"],
-        "default_sort": "priority"
-    },
-
-    "untriaged-ni": {
-        "is_user": false,
-        "title": "Untriaged bugs (awaiting ni?)",
-        "query": {
-            "product": "Core",
-            "component": NeckoTriage.prototype.components,
-            "query_format": "advanced",
-            "f1": "flagtypes.name",
-            "v1": "needinfo?",
-            "resolution": "---",
-            "o1": "substring",
-            "n3": "1",
-            "f3": "status_whiteboard",
-            "o3": "substring",
-            "v3": "[necko-triaged]",
-            "n4": "1",
-            "f4": "status_whiteboard",
-            "o4": "substring",
-            "v4": "[necko-would-take]",
-            "n5": "1",
-            "f5": "status_whiteboard",
-            "o5": "substring",
-            "v5": "[necko-backlog]",
-            "n6": "1",
-            "f6": "status_whiteboard",
-            "o6": "substring",
-            "v6": "[necko-active]",
-            "n7": "1",
-            "f7": "status_whiteboard",
-            "o7": "substring",
-            "v7": "[necko-next]",
-        },
-        "extra_columns": ["ni-date"],
-        "default_sort": "ni-date"
+        "extra_columns": [],
+        "default_sort": "severity"
     },
 
     // TEST FAILURES SECTION
@@ -150,7 +170,7 @@ NeckoTriage.prototype.availableTables = {
         "is_user": false,
         "title": "Recent Intermittent test failures",
         "query": {
-            "product": "Core",
+            "product": ["Core","Firefox","Toolkit"],
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "resolution": "---",
@@ -199,7 +219,7 @@ NeckoTriage.prototype.availableTables = {
         "is_user": false,
         "title": "Intermittent test crashes",
         "query": {
-            "product": "Core",
+            "product": ["Core","Firefox","Toolkit"],
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "resolution": "---",
@@ -244,7 +264,7 @@ NeckoTriage.prototype.availableTables = {
         "is_user": false,
         "title": "Intermittent test failures",
         "query": {
-            "product": "Core",
+            "product": ["Core","Firefox","Toolkit"],
             "query_format": "advanced",
             "component": NeckoTriage.prototype.components,
             "resolution": "---",
@@ -285,61 +305,54 @@ NeckoTriage.prototype.availableTables = {
         "default_sort": "failure_count"
     },
 
-    // UNASSIGNED P1 SECTION
-    "p1-unassigned": {
+
+    "untriaged-ni": {
         "is_user": false,
-        "title": "Unassigned P1 bugs",
+        "title": "Untriaged bugs (awaiting ni?)",
         "query": {
-            "j_top": "OR",
-            "f1": "assigned_to",
-            "o1": "isempty",
-            "f2": "assigned_to",
-            "o2": "equals",
-            "v2": "nobody@mozilla.org",
-            "product": "Core",
-            "query_format": "advanced",
+            "product": ["Core","Firefox","Toolkit"],
             "component": NeckoTriage.prototype.components,
-            "priority": "P1",
-            "resolution": "---"
+            "query_format": "advanced",
+            "f1": "flagtypes.name",
+            "v1": "needinfo?",
+            "resolution": "---",
+            "o1": "substring",
+            "n3": "1",
+            "f3": "status_whiteboard",
+            "o3": "substring",
+            "v3": "[necko-triaged]",
+            "n4": "1",
+            "f4": "status_whiteboard",
+            "o4": "substring",
+            "v4": "[necko-would-take]",
+            "n5": "1",
+            "f5": "status_whiteboard",
+            "o5": "substring",
+            "v5": "[necko-backlog]",
+            "n6": "1",
+            "f6": "status_whiteboard",
+            "o6": "substring",
+            "v6": "[necko-active]",
+            "n7": "1",
+            "f7": "status_whiteboard",
+            "o7": "substring",
+            "v7": "[necko-next]",
         },
-        "extra_columns": [],
-        "default_sort": "severity"
+        "extra_columns": ["ni-date"],
+        "default_sort": "ni-date"
     },
 };
 
 // UNASSIGNED P2 BUGS SECTION
 NeckoTriage.prototype.add_more_tables = function () {
-    for (comp in this.components) {
-        let name = "p2-unassigned-" + comp;
-        let title = "Unassigned P2 bugs - " + this.components[comp];
-        this.availableTables[name] =  {
-            "is_user": false,
-            "title": title,
-            "query": {
-                "j_top": "OR",
-                "f1": "assigned_to",
-                "o1": "isempty",
-                "f2": "assigned_to",
-                "o2": "equals",
-                "v2": "nobody@mozilla.org",
-                "product": "Core",
-                "query_format": "advanced",
-                "component": [this.components[comp]],
-                "priority": "P2",
-                "resolution": "---"
-            },
-            "extra_columns": [],
-            "default_sort": "severity",
-        };
-    }
 
     // META BUGS SECTION
     this.availableTables["meta-bugs"] = {
         "is_user": false,
         "title": "Meta Bugs",
         "query": {
-            "product": "Core",
             "query_format": "advanced",
+            "product": ["Core","Firefox","Toolkit"],
             "component": NeckoTriage.prototype.components,
             "resolution": "---",
             "keywords": "meta",
