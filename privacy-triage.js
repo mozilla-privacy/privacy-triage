@@ -77,6 +77,23 @@ NeckoTriage.prototype.availableTables = {
         "default_sort": "priority"
     },
 
+        // triaged PRIORITY SECTION
+        "triaged-priority": {
+            "is_user": false,
+            // "title": "Necko Next Priority",
+            "title": "Privacy Triaged",
+            "query": {
+                "product": ["Core","Firefox","Toolkit"],
+                "query_format": "advanced",
+                "component": NeckoTriage.prototype.components,
+                "resolution": "---",
+                "keywords": "priv-triaged",
+                "keywords_type": "allwords"
+            },
+            "extra_columns": ["priority"],
+            "default_sort": "priority"
+        },
+
     // MONITOR SECTION
     "monitoring": {
         "is_user": false,
